@@ -4,5 +4,6 @@ export interface User extends Document{
     name: string;
     mail: string;
     password: string;
-    securityq: string;
+    securityqOp: string;
+    securityqAn:string;
 }

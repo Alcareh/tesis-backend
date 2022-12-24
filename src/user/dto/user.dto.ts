@@ -12,6 +12,7 @@ export class PostUserMethod extends BaseDTO{
     readonly name: string;
     readonly mail: string;
     readonly password: string;
-    readonly securityq: string;
+    readonly securityqOp: string;
+    readonly securityqAn: string;
 }
 

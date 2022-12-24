@@ -26,6 +26,24 @@ constructor(@InjectModel('User') private readonly userModel:Model<User>){}
         const user=  await this.userModel.findOne({name:userName});
         return user;
     }
+    //Select an user with their password
+    async getLoginUser(userName:string,pass:string):Promise<User>{
+        const user=  await this.userModel.findOne({
+            name:userName,
+            password:pass
+        });
+        return user;
+    }
+
+    //Check the user with the email, securityqOp and securityqAn
+    async getCheckRecover(email:string,securityqOpci:string,securityqAnsw:string):Promise<User>{
+        const user=  await this.userModel.findOne({
+            mail: email,
+            securityqOp: securityqOpci,
+            securityqAn:securityqAnsw
+        });
+        return user;
+    }
     //Create a new User
     async createUser(postUserMethod:PostUserMethod):Promise<User>{
        const user=  new this.userModel(postUserMethod);
