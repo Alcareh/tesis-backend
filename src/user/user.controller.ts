@@ -88,15 +88,12 @@ export class UserController {
     }
 
 // Update User: /user/update  //toca poner el   ID y el otro campo que quiere cambiar en el json
-    @Put('/update')
+    @Post('/update')
     async updateUser(@Res() res, @Body() postUserMethod: PostUserMethod, @Body('_id') userID) {
-        console.log(postUserMethod);
-        console.log(userID);
         const updatedUser = await this.userService.updateUser(userID, postUserMethod);
         if (!updatedUser) throw new NotFoundException('User does not exist!');
         return res.status(HttpStatus.OK).json({
             message: 'User Updated Successfully',
-            updatedUser 
         });
     }   
 }
