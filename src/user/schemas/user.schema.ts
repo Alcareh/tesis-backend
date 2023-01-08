@@ -6,5 +6,6 @@ export const UserSchema=new Schema({
     mail: String,
     password: String,
     securityqOp: String,
-    securityqAn:String
+    securityqAn:String,
+    newAccount: {type: Boolean, default: true}
 })

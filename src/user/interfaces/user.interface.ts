@@ -6,4 +6,5 @@ export interface User extends Document{
     password: string;
     securityqOp: string;
     securityqAn:string;
+    newAccount:boolean;
 }

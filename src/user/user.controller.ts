@@ -62,7 +62,7 @@ export class UserController {
         //console.log(userName,password);        
         const user = await this.userService.getLoginUser(data.name,data.password);
         if (!user) throw new NotFoundException('Usuario o contraseña incorrectos');
-        return res.status(HttpStatus.OK).json({message:"Correct Login"});
+        return res.status(HttpStatus.OK).json({message:"Correct Login", _id: user._id});
     }
 
     @Post('/CheckRecover')
@@ -88,7 +88,7 @@ export class UserController {
     }
 
 // Update User: /user/update  //toca poner el   ID y el otro campo que quiere cambiar en el json
-    @Post('/PasswordRecover')
+    @Post('/updateData')
     async updateUser(@Res() res, @Body() postUserMethod: PostUserMethod, @Body('_id') userID) {
         const updatedUser = await this.userService.updateUser(userID, postUserMethod);
         if (!updatedUser) throw new NotFoundException('User does not exist!');
