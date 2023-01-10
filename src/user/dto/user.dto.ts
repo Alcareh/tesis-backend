@@ -15,5 +15,14 @@ export class PostUserMethod extends BaseDTO{
     readonly securityqOp: string;
     readonly securityqAn: string;
     readonly newAccount:boolean;
+    readonly fondoAvatar: string;
+    readonly avatarUser: string;
+    readonly pasavatarLoteword: string;
+    readonly progreso: string;
+    readonly habilidad: string;
+    readonly nivel:string;
+    readonly puntos: string;
+    readonly notify:boolean;
+    readonly logros: string;
 }
 
