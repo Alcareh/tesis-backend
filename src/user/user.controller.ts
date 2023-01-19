@@ -97,4 +97,18 @@ export class UserController {
         });
     }   
 }
+/*
+
+@Controller('game')
+export class GameController {
+//Acá van los endpoints
+
+    constructor(private gameService:GameService){}
+    @Post('/list')
+    async gamesUser(@Res() res,@Body() userID) {
+        const users = await this.gameService.gamesUser(userID);
+        if (!users) throw new NotFoundException('user does not exist!');
+        return res.status(HttpStatus.OK).json(users);
+    }
+}*/
 

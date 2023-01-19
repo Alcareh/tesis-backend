@@ -17,12 +17,21 @@ export class PostUserMethod extends BaseDTO{
     readonly newAccount:boolean;
     readonly fondoAvatar: string;
     readonly avatarUser: string;
-    readonly pasavatarLoteword: string;
     readonly progreso: string;
     readonly habilidad: string;
     readonly nivel:string;
     readonly puntos: string;
     readonly notify:boolean;
+    readonly notify2:boolean;
     readonly logros: string;
 }
+/*export class PostGameMethod extends BaseDTO{
+   readonly lvl:string;
+   readonly fecha:string;
+   readonly tiempo:string;
+   readonly user:{
+        _id:string,
+        puntos:string
+    }
+}*/
 

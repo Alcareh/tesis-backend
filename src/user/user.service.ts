@@ -15,7 +15,7 @@ constructor(@InjectModel('User') private readonly userModel:Model<User>){}
         return users;
     }
 
-    // Get a single Product by ID
+    // Get a single User by ID
     async getUserID(userID: string): Promise<User> {
         const user = await this.userModel.findById(userID); 
         return user;
@@ -63,3 +63,13 @@ constructor(@InjectModel('User') private readonly userModel:Model<User>){}
         return updatedUser;
     }
 }
+/*
+export class GameService{
+    constructor(@InjectModel('Game') private readonly gameModel:Model<Game>){}
+
+    async gamesUser(userID:string): Promise<Game[]>{
+        const query:any={ user:new mongoose.Types.ObjectId(userID)}
+        const games= await this.gameModel.find(query).exec()
+        return games
+    }
+}*/
