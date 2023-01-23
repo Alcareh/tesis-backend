@@ -1,15 +1,17 @@
 import { Module } from '@nestjs/common';
 import { UserController } from './user.controller';
-import { UserService } from './user.service';
+import { GameController } from './user.controller';
+import { GameService, UserService } from './user.service';
 import { MongooseModule } from '@nestjs/mongoose';
 import { UserSchema } from './schemas/user.schema';
-// Para mongo
+import { GameSchema } from './schemas/game.schema';
+// Para mongo el name es el del servicio
 @Module({
   imports:[MongooseModule.forFeature([
-    {name:'User', schema:UserSchema 
-  }
+    {name:'User', schema:UserSchema},
+    {name:'Game', schema:GameSchema}
   ])],
-  controllers: [UserController],
-  providers: [UserService]
+  controllers: [UserController,GameController],
+  providers: [UserService,GameService]
 })
 export class UserModule {}

@@ -12,18 +12,12 @@ export interface User extends Document{
     progreso:string,
     habilidad:string,
     nivel:string,
-    puntos:string,
-    notify:boolean,
+    puntos:number,
+    puntosLvl1Old:number ;
+    puntosLvl1New: number;
+    puntosLvl2Old: number;
+    puntosLvl2New: number;
+    notify:boolean[],
     notify2:boolean,
-    logros:string
+    logros:boolean[]
 }
-/*
-export interface Game extends Document{
-    lvl:string,
-    fecha:string,
-    tiempo:string,
-    user:{
-        _id:string,
-        puntos:string
-    }
-}*/

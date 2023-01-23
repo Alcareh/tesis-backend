@@ -1,7 +1,7 @@
 //Este esquema para type script
 //Data transfer object, datos que se van a mandar entre cliente y servidor (Para métodos post)
 
-class BaseDTO
+export class BaseDTO
 {
     public  _id : string;
 }
@@ -20,18 +20,13 @@ export class PostUserMethod extends BaseDTO{
     readonly progreso: string;
     readonly habilidad: string;
     readonly nivel:string;
-    readonly puntos: string;
-    readonly notify:boolean;
+    readonly puntos: number;
+    readonly puntosLvl1Old:number ;
+    readonly puntosLvl1New: number;
+    readonly puntosLvl2Old: number;
+    readonly puntosLvl2New: number;
+    readonly notify:boolean[];
     readonly notify2:boolean;
-    readonly logros: string;
+    readonly logros: boolean[];
 }
-/*export class PostGameMethod extends BaseDTO{
-   readonly lvl:string;
-   readonly fecha:string;
-   readonly tiempo:string;
-   readonly user:{
-        _id:string,
-        puntos:string
-    }
-}*/
 
