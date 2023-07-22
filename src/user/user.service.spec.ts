@@ -1,6 +1,7 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { UserService } from './user.service';
 import { GameService } from './user.service';
+import { DataService } from './user.service';
 
 describe('UserService', () => {
   let service: UserService;
@@ -27,6 +28,22 @@ describe('GameService', () => {
     }).compile();
 
     service = module.get<GameService>(GameService);
+  });
+
+  it('should be defined', () => {
+    expect(service).toBeDefined();
+  });
+});
+
+describe('DataService', () => {
+  let service: DataService;
+
+  beforeEach(async () => {
+    const module: TestingModule = await Test.createTestingModule({
+      providers: [DataService],
+    }).compile();
+
+    service = module.get<DataService>(DataService);
   });
 
   it('should be defined', () => {

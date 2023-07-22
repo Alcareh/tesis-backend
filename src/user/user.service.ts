@@ -4,8 +4,10 @@ import { ObjectId } from "mongodb"
 import { InjectModel } from '@nestjs/mongoose/dist';
 import { User } from './interfaces/user.interface';
 import { Game } from './interfaces/game.interface';
+import { Data } from './interfaces/data.interface';
 import { PostUserMethod } from './dto/user.dto';
 import { PostGameMethod } from './dto/game.dto';
+import { PostDataMethod } from './dto/data.dto';
 import { json } from 'node:stream/consumers';
 import { userInfo } from 'os';
 //Métodos para endpoints
@@ -258,3 +260,14 @@ export class GameService {
         );
   } 
 }
+
+export class DataService {
+  constructor(@InjectModel('Data')private readonly dataModel:Model<Data>,@InjectModel('User') private readonly userModel:Model<User>){}
+
+    async createData(postDataMethod:PostDataMethod):Promise<Data>{
+        const data=  new this.dataModel(postDataMethod);
+        //console.log(data);
+        return await data.save();
+  }  
+}
+

@@ -1,8 +1,10 @@
 import { Controller, Post, Res, HttpStatus, Body, Get, NotFoundException, Delete, Put} from '@nestjs/common';
 import { PostUserMethod } from './dto/user.dto'
 import { PostGameMethod } from './dto/game.dto'
+import { PostDataMethod } from './dto/data.dto'
 import { UserService } from './user.service';
 import { GameService } from './user.service';
+import { DataService } from './user.service';
 import { UserAuth } from 'src/config';
 import { get } from 'node:http';
 
@@ -15,7 +17,7 @@ export class UserController {
     // Add User: /user/auth/create
     //json con todos los datos
     @Post('/auth/create')
-    async createUser(@Res() res, @Body() postUserMethod: PostUserMethod,) {
+    async createUser(@Res() res, @Body() postUserMethod: PostUserMethod) {
         //console.log(postUserMethod);
         const user = await this.userService.createUser(postUserMethod);
         return res.status(HttpStatus.OK).json({
@@ -174,3 +176,77 @@ export class GameController {
     }
 
 }
+
+@Controller('data')
+export class DataController {
+    //Acá van los endpoints
+    
+        constructor(private dataService:DataService,private userService:UserService){}
+        @Post('/create')
+        async createData(@Res() res, @Body() postDataMethod: PostDataMethod) {
+            const data = await this.dataService.createData(postDataMethod);
+            return res.status(HttpStatus.OK).json({data});
+        }
+
+    
+        /*@Post('/list')
+        async getGames(@Res() res, @Body() data) {
+            const game = await this.gameService.getGames(data.user);
+            return res.status(HttpStatus.OK).json(game);
+        }
+    
+    
+        @Get('/list2')
+        async getUsers(@Res() res) {
+            const users = await this.gameService.getGames2();
+            return res.status(HttpStatus.OK).json(users);
+        }
+    
+        @Post('/progress')
+        async getProgreso(@Res() res, @Body() data) {
+            const ListaRta=[];
+            var progress = await this.gameService.getProgreso(data.user,'1');
+            var progress2 = await this.gameService.getProgreso(data.user,'2');
+            for (let index = 0; index < 2; index++) {
+                if(progress[index]!=null){
+                    ListaRta.push(progress[index]);
+                }
+                if(progress2[index]!=null){
+                    ListaRta.push(progress2[index]);
+                }            
+            }
+            return res.status(HttpStatus.OK).json({progresses:ListaRta});
+        }
+    
+      /*  @Get('/aiuda')
+        async Aiuda(@Res() res){
+            const x= await this.userService.Aiuda();
+            return res.status(HttpStatus.OK).json({x});
+        }
+    
+        @Get('/tier')
+        async Tier(@Res() res) {
+            var rta={};
+            const ListaRta=[];
+            const users = await this.gameService.Tier();
+            for (let index = 0; index < users.length; index++) {
+                var data = await this.userService.getUserID(users[index].user.toString()) //estaba en ObjectID lo pasé a string para poder consultar
+                 rta={_id:users[index].user.toString(),
+                        name:data.name,
+                        fondoAvatar:data.fondoAvatar,
+                        avatarUser:data.avatarUser,
+                        puntos:users[index].puntos,
+                        tiempo:users[index].tiempo};
+                ListaRta.push(rta);        
+            }        
+            return res.status(HttpStatus.OK).json({items:ListaRta});
+        }
+    
+        @Post('/updateData')
+        async actualizarData(@Res() res, @Body() data) {
+            await this.gameService.actualizarData1(data._id);
+            await this.gameService.actualizarData2(data._id);
+            return res.status(HttpStatus.OK).json({message: 'User Updated Successfully'});
+        }
+       */
+    }
